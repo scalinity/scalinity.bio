@@ -26,12 +26,9 @@ struct RootView: View {
 
     var body: some View {
         NavigationSplitView {
-            List(selection: $selection) {
-                ForEach(AppSection.allCases) { section in
-                    NavigationLink(value: section) {
-                        Label(section.rawValue, systemImage: section.systemImage)
-                    }
-                }
+            List(AppSection.allCases, selection: $selection) { section in
+                Label(section.rawValue, systemImage: section.systemImage)
+                    .tag(section as AppSection?)
             }
             .navigationTitle("scalinity.bio")
         } detail: {
@@ -43,9 +40,6 @@ struct RootView: View {
                 }
             }
             .frame(minWidth: 800, minHeight: 520)
-        }
-        .navigationDestination(for: AppSection.self) { section in
-            detailView(for: section)
         }
         .environmentObject(app)
     }

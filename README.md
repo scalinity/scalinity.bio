@@ -38,7 +38,7 @@ python -m ML.data_simulation --out Data/synthetic_cohort.csv --n 1200
 
 # Train + export CoreML:
 python -m ML.model_training --data Data/synthetic_cohort.csv --outdir ML/artifacts
-python -m ML.coreml_export --artifacts ML/artifacts --out Resources/Models/BioAgeRegressor.mlmodeldata
+python -m ML.coreml_export --artifacts ML/artifacts --out Resources/Models/BioAgeRegressor.mlmodeldata --target bio_age_delta
 ```
 
 ### Tests

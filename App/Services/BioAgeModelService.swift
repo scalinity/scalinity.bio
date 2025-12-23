@@ -5,7 +5,9 @@ final class BioAgeModelService {
     private let model: MLModel
     private let outputKey: String
 
-    init(modelName: String = "BioAgeRegressor", outputKey: String = "biological_age") throws {
+    // Note: Current CoreML export produces a delta-like output (years vs. chronological age).
+    // We name it `bio_age_delta` in the CoreML model for clarity.
+    init(modelName: String = "BioAgeRegressor", outputKey: String = "bio_age_delta") throws {
         self.outputKey = outputKey
 
         // Workaround for Xcode Analyze: avoid bundling a `.mlmodel` resource (it can trigger codegen language detection).
