@@ -11,7 +11,7 @@ def main() -> None:
     p = argparse.ArgumentParser(description="Export trained model artifacts to a CoreML .mlmodel file.")
     p.add_argument("--artifacts", required=True, help="Path to ML artifacts directory (from model_training.py)")
     p.add_argument("--out", required=True, help="Output model path (.mlmodel or .mlmodeldata)")
-    p.add_argument("--target", default="biological_age", help="Output name in the CoreML model")
+    p.add_argument("--target", default="bio_age_delta", help="Output name in the CoreML model (recommended: bio_age_delta)")
     args = p.parse_args()
 
     artifacts_dir = Path(args.artifacts)

@@ -19,7 +19,10 @@ final class BioAgeEngine {
         let input = try await preprocessor.makeModelInput(profile: profile)
         let featureVector = try await preprocessor.makeFeatureVector(profile: profile)
 
-        let predicted = try model.predictBiologicalAge(modelInput: input)
+        // The CoreML model output is treated as a delta (years relative to chronological age).
+        // This matches the XGBoost booster behavior in this repo's current export pipeline.
+        let deltaFromModel = try model.predictBiologicalAge(modelInput: input)
+        let predicted = profile.chronologicalAge + deltaFromModel
         let delta = predicted - profile.chronologicalAge
 
         let baScore = Self.baScore(deltaYears: delta)
