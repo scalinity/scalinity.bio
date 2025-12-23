@@ -1,0 +1,14 @@
+# Optional dependencies
+#
+# These are not required to run the core simulation/training pipeline.
+# They enable extra realism in the simulator:
+# - BioPython: per-gene baseline variation via GC fraction utilities
+# - RDKit: metabolite descriptor scalars (requires compiled wheels; often easiest via conda)
+
+biopython==1.84
+
+# If pip wheels are unavailable for your Python, prefer conda-forge:
+#   conda install -c conda-forge rdkit
+rdkit-pypi==2022.9.5
+
+

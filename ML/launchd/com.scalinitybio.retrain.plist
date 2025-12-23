@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.scalinitybio.retrain</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-lc</string>
+    <string>/ABSOLUTE/PATH/TO/scalinity.bio/ML/retrain_weekly.sh</string>
+  </array>
+
+  <!-- Weekly at 03:00 (Weekday: 1=Sunday ... 7=Saturday) -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>2</integer>
+    <key>Hour</key><integer>3</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/scalinitybio-retrain.out</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/scalinitybio-retrain.err</string>
+</dict>
+</plist>
+
+

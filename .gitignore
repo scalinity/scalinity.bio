@@ -1,0 +1,13 @@
+.DS_Store
+.swiftpm
+.build
+DerivedData
+.vscode
+.idea
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+ML/artifacts/
+Resources/Models/*.mlmodelc
+
