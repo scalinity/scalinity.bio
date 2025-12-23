@@ -44,3 +44,4 @@ def test_resources_exist_after_training():
         json.loads(model_schema.read_text(encoding="utf-8"))
 
 
+
