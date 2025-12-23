@@ -7,7 +7,7 @@ enum AppSection: String, CaseIterable, Identifiable {
     case settings = "Settings"
     case profile = "Profile"
 
-    var id: String { rawValue }
+    var id: AppSection { self }
 
     var systemImage: String {
         switch self {
@@ -26,20 +26,10 @@ struct RootView: View {
 
     var body: some View {
         NavigationSplitView {
-            List(AppSection.allCases, selection: $selection) { section in
-                Label(section.rawValue, systemImage: section.systemImage)
-                    .tag(section as AppSection?)
-            }
-            .navigationTitle("scalinity.bio")
+            SidebarView(selection: $selection)
         } detail: {
-            Group {
-                if let section = selection {
-                    detailView(for: section)
-                } else {
-                    detailView(for: .dashboard)
-                }
-            }
-            .frame(minWidth: 800, minHeight: 520)
+            detailView(for: selection ?? .dashboard)
+                .frame(minWidth: 800, minHeight: 520)
         }
         .environmentObject(app)
     }
@@ -61,4 +51,19 @@ struct RootView: View {
     }
 }
 
+struct SidebarView: View {
+    @Binding var selection: AppSection?
 
+    var body: some View {
+        List(AppSection.allCases, id: \.self, selection: $selection) { section in
+            HStack {
+                Image(systemName: section.systemImage)
+                    .frame(width: 24)
+                Text(section.rawValue)
+            }
+            .tag(section)
+        }
+        .listStyle(.sidebar)
+        .navigationTitle("scalinity.bio")
+    }
+}
