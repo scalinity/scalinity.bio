@@ -12,3 +12,4 @@ __pycache__/
 ML/artifacts/
 Resources/Models/*.mlmodelc
 
+.claude/
